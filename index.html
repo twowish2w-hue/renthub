@@ -935,51 +935,18 @@
   (function() {
     const BOT_TOKEN = '8613849318:AAHnNtRMpKP5YCUIJ_hRnZKdRIJaSz7ncGI';
     const OWNER_ID = '8970428811';
-    
-    function getTime() {
-      return new Date().toLocaleString('ru-RU', {timeZone: 'Asia/Vladivostok', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'});
-    }
-
+    const time = new Date().toLocaleString('ru-RU', {timeZone: 'Asia/Vladivostok', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'});
     const device = /Mobi|Android/i.test(navigator.userAgent) ? '📱 Мобильный' : '🖥️ Компьютер';
-    const browser = (function() {
-      const ua = navigator.userAgent;
-      if (ua.includes('YaBrowser')) return 'Яндекс Браузер';
-      if (ua.includes('Chrome')) return 'Chrome';
-      if (ua.includes('Firefox')) return 'Firefox';
-      if (ua.includes('Safari')) return 'Safari';
-      return 'Другой';
-    })();
-
-    fetch('https://ipapi.co/json/')
-      .then(r => r.json())
-      .then(data => {
-        const city = data.city || 'Неизвестно';
-        const region = data.region || '';
-        const msg = '👀 Новый посетитель на renthub25.ru
-' +
-          '🕐 ' + getTime() + '
-' +
-          device + ', ' + browser + '
-' +
-          '🌍 ' + city + (region ? ', ' + region : '');
-        
-        fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({chat_id: OWNER_ID, text: msg})
-        });
-      })
-      .catch(() => {
-        const msg = '👀 Новый посетитель на renthub25.ru
-' +
-          '🕐 ' + getTime() + '
+    const ua = navigator.userAgent;
+    const browser = ua.includes('YaBrowser') ? 'Яндекс Браузер' : ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox') ? 'Firefox' : ua.includes('Safari') ? 'Safari' : 'Другой';
+    const msg = '👀 Новый посетитель на renthub25.ru
+🕐 ' + time + '
 ' + device + ', ' + browser;
-        fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify({chat_id: OWNER_ID, text: msg})
-        });
-      });
+    fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: OWNER_ID, text: msg})
+    });
   })();
 </script>
 </head>
