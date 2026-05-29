@@ -931,16 +931,15 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/109474341" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 <script>
-  // Уведомление в Telegram при посещении сайта
   (function() {
-    const BOT_TOKEN = '8613849318:AAHnNtRMpKP5YCUIJ_hRnZKdRIJaSz7ncGI';
-    const OWNER_ID = '8970428811';
-    const time = new Date().toLocaleString('ru-RU', {timeZone: 'Asia/Vladivostok', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'});
-    const device = /Mobi|Android/i.test(navigator.userAgent) ? '📱 Мобильный' : '🖥️ Компьютер';
-    const ua = navigator.userAgent;
-    const browser = ua.includes('YaBrowser') ? 'Яндекс Браузер' : ua.includes('Chrome') ? 'Chrome' : ua.includes('Firefox') ? 'Firefox' : ua.includes('Safari') ? 'Safari' : 'Другой';
-    const msg = '👀 Новый посетитель на renthub25.ru
-🕐 ' + time + '
+    var BOT_TOKEN = '8613849318:AAHnNtRMpKP5YCUIJ_hRnZKdRIJaSz7ncGI';
+    var OWNER_ID = '8970428811';
+    var time = new Date().toLocaleString('ru-RU', {timeZone: 'Asia/Vladivostok', hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit'});
+    var device = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobi' : 'PC';
+    var ua = navigator.userAgent;
+    var browser = ua.indexOf('YaBrowser') > -1 ? 'Yandex' : ua.indexOf('Chrome') > -1 ? 'Chrome' : ua.indexOf('Firefox') > -1 ? 'Firefox' : ua.indexOf('Safari') > -1 ? 'Safari' : 'Other';
+    var msg = 'Новый посетитель renthub25.ru
+' + time + '
 ' + device + ', ' + browser;
     fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
       method: 'POST',
