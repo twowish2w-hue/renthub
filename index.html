@@ -938,9 +938,7 @@
     var device = /Mobi|Android/i.test(navigator.userAgent) ? 'Mobi' : 'PC';
     var ua = navigator.userAgent;
     var browser = ua.indexOf('YaBrowser') > -1 ? 'Yandex' : ua.indexOf('Chrome') > -1 ? 'Chrome' : ua.indexOf('Firefox') > -1 ? 'Firefox' : ua.indexOf('Safari') > -1 ? 'Safari' : 'Other';
-    var msg = 'Новый посетитель renthub25.ru
-' + time + '
-' + device + ', ' + browser;
+    var msg = 'Новый посетитель renthub25.ru\n' + time + '\n' + device + ', ' + browser;
     fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
